@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ✅ Verificación Bing Webmaster Tools -->
+  <meta name="msvalidate.01" content="2F5B02AAC7FAF19E2842CC961EF2EBAF" />
+
+  <!-- SEO Principal -->
+  <title>DEVMATRIX — API unificada de IA para developers | devmatrixs.lat</title>
+  <meta name="description" content="DEVMATRIX es la API oficial de devmatrixs.lat. Chat inteligente, visión por computadora, síntesis de voz y generación de imágenes en un solo endpoint. Diseñada para developers latinoamericanos." />
+  <meta name="keywords" content="API inteligencia artificial, IA para developers, chat IA, visión por computadora, API en español, devmatrixs, DEVMATRIX" />
+  <meta name="author" content="Matrix IA — devmatrixs.lat" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://devmatrixs.lat/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devmatrixs.lat/" />
+  <meta property="og:title" content="DEVMATRIX — API de IA para developers" />
+  <meta property="og:description" content="Una API que integra chat, imágenes, voz y más. Simple, potente y escalable desde devmatrixs.lat." />
+  <meta property="og:image" content="https://devmatrixs.lat/og-image.png" />
+  <meta property="og:site_name" content="DEVMATRIX" />
+  <meta property="og:locale" content="es_PE" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DEVMATRIX — API de IA para developers" />
+  <meta name="twitter:description" content="Chat, visión, voz e imágenes. Todo desde api.devmatrixs.lat con un solo API Key." />
+  <meta name="twitter:image" content="https://devmatrixs.lat/og-image.png" />
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "DEVMATRIX",
+    "url": "https://devmatrixs.lat",
+    "description": "API unificada de Inteligencia Artificial para developers. Chat, visión, voz e imágenes.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Matrix IA",
+      "url": "https://devmatrixs.lat",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "contacto@devmatrixs.lat",
+        "contactType": "customer support"
+      }
+    }
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+  <div class="bg-fixed"></div>
+  <div class="grid-bg"></div>
+  <div id="stars"></div>
+  <div class="mouse-glow" id="mouseGlow"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- NAV — logo lleva a / (index) -->
+  <nav id="navbar">
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2">
+          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/>
+          <line x1="12" y1="2" x2="12" y2="22"/>
+          <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+          <line x1="2" y1="15.5" x2="22" y2="15.5"/>
+        </svg>
+      </div>
+      DEVMATRIX
+    </a>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Funciones</a>
+      <a href="#demo" class="nav-link">Demo</a>
+      <a href="/dashboard" class="nav-link">Dashboard</a>
+      <a href="/about" class="nav-link">Nosotros</a>
+      <!-- Botón principal → lleva a /login -->
+      <a href="/login" class="nav-cta">Empezar gratis</a>
+    </div>
+    <div class="nav-mobile-cta">
+      <a href="/login" class="nav-cta">Entrar</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features">Funciones</a>
+    <a href="#demo">Demo</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/about">Nosotros</a>
+    <a href="/login" class="mobile-menu-cta">Empezar gratis</a>
+  </div>
+
+  <main>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Chat · Visión · Voz · Imágenes · API propia
+        </div>
+        <h1 class="hero-title">
+          <span class="grad">La IA que</span><br>
+          <span class="grad2" id="typingText">potencia tu código</span><span class="cursor" id="cursor"></span>
+        </h1>
+        <p class="hero-sub">
+          DEVMATRIX es tu asistente de IA y API unificada. Chat inteligente, análisis de imágenes,
+          generación de voz e imágenes. Todo desde
+          <strong style="color:var(--accent-light);">api.devmatrixs.lat</strong>.
+        </p>
+        <div class="hero-btns">
+          <a href="/login" class="btn-hero-primary">
+            <i data-lucide="zap" style="width:16px;height:16px;"></i>
+            Empezar gratis
+          </a>
+          <a href="/dashboard" class="btn-hero-ghost">
+            <i data-lucide="code-2" style="width:16px;height:16px;"></i>
+            Ver documentación
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">DEVMATRIX Core</div>
+            <div class="hero-stat-label">Motor propio</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">API Unificada</div>
+            <div class="hero-stat-label">Chat + Visión + Voz + Imágenes</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">+1000</div>
+            <div class="hero-stat-label">Desarrolladores</div>
+          </div>
+          <div class="hero-stat-divider"></div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">99.9%</div>
+            <div class="hero-stat-label">Uptime</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <div class="container">
+        <div class="reveal">
+          <span class="section-label"><i data-lucide="sparkles" style="width:14px;height:14px;"></i> Capacidades de la API</span>
+          <h2 class="section-title">Todo lo que DEVMATRIX puede hacer</h2>
+          <p class="section-sub">Un solo endpoint para chat, imágenes, voz y más. Integración en minutos desde <code style="font-family:var(--mono);color:var(--accent-light);font-size:.85em;">api.devmatrixs.lat</code>.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feat-card reveal reveal-delay-1">
+            <div class="feat-icon"><i data-lucide="message-square" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">Chat inteligente</div>
+            <div class="feat-desc">Conversaciones con contexto persistente. Respuestas con código separado, syntax highlight y botones de copiar.</div>
+            <span class="feat-tag">POST /v1/chat</span>
+          </div>
+          <div class="feat-card reveal reveal-delay-2">
+            <div class="feat-icon"><i data-lucide="image" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">Visión de imágenes</div>
+            <div class="feat-desc">Envía una imagen y DEVMATRIX la analiza, describe, extrae código de capturas o explica errores visuales.</div>
+            <span class="feat-tag">POST /v1/vision</span>
+          </div>
+          <div class="feat-card reveal reveal-delay-3">
+            <div class="feat-icon"><i data-lucide="mic" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">Voz a voz</div>
+            <div class="feat-desc">Habla con la IA desde tu app. Reconocimiento de voz en español y respuestas en audio natural.</div>
+            <span class="feat-tag">POST /v1/tts</span>
+          </div>
+          <div class="feat-card reveal reveal-delay-1">
+            <div class="feat-icon"><i data-lucide="image-plus" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">Generación de imágenes</div>
+            <div class="feat-desc">Crea imágenes desde descripciones de texto. Útil para mockups, iconos y assets visuales de todo tipo.</div>
+            <span class="feat-tag">POST /v1/generate</span>
+          </div>
+          <div class="feat-card reveal reveal-delay-2">
+            <div class="feat-icon"><i data-lucide="terminal" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">Experto en código</div>
+            <div class="feat-desc">Debug, refactoring, generación de scripts. Soporta Node.js, Python, HTML/CSS, SQL y más lenguajes.</div>
+            <span class="feat-tag">POST /v1/chat</span>
+          </div>
+          <div class="feat-card reveal reveal-delay-3">
+            <div class="feat-icon"><i data-lucide="key" style="width:20px;height:20px;"></i></div>
+            <div class="feat-title">API para developers</div>
+            <div class="feat-desc">Integración simple con autenticación por API Key desde el Dashboard. Documentación interactiva incluida.</div>
+            <span class="feat-tag">Dashboard → API Keys</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section id="demo">
+      <div class="container">
+        <div class="demo-layout">
+          <div class="demo-text reveal">
+            <span class="section-label"><i data-lucide="eye" style="width:14px;height:14px;"></i> En acción</span>
+            <h2 class="section-title">Código separado del texto</h2>
+            <p class="section-sub">Cuando DEVMATRIX responde con código, lo presenta en un bloque separado con syntax highlight, el lenguaje identificado y botón de copiar.</p>
+            <div class="demo-bullets">
+              <div class="demo-bullet">
+                <i data-lucide="check-circle" class="demo-bullet-icon"></i>
+                <span><strong>Sintaxis coloreada</strong> para todos los lenguajes populares</span>
+              </div>
+              <div class="demo-bullet">
+                <i data-lucide="check-circle" class="demo-bullet-icon"></i>
+                <span><strong>Botón de copiar</strong> en cada bloque de código</span>
+              </div>
+              <div class="demo-bullet">
+                <i data-lucide="check-circle" class="demo-bullet-icon"></i>
+                <span><strong>Lenguaje detectado</strong> automáticamente por la IA</span>
+              </div>
+              <div class="demo-bullet">
+                <i data-lucide="check-circle" class="demo-bullet-icon"></i>
+                <span><strong>Texto e instrucciones</strong> siempre separados del código</span>
+              </div>
+            </div>
+            <div style="margin-top:28px;">
+              <a href="/login" class="btn-hero-primary" style="display:inline-flex;">
+                <i data-lucide="play" style="width:15px;height:15px;"></i>
+                Probar ahora
+              </a>
+            </div>
+          </div>
+          <div class="chat-mockup reveal reveal-delay-2">
+            <div class="cm-header">
+              <div class="cm-dot r"></div><div class="cm-dot y"></div><div class="cm-dot g"></div>
+              <span class="cm-title">DEVMATRIX · Chat interactivo</span>
+            </div>
+            <div class="cm-body" id="chatBody">
+              <div class="cm-msg user">
+                <div class="cm-avatar user">K</div>
+                <div class="cm-bubble">Crea una función en JS para hacer fetch con manejo de errores</div>
+              </div>
+              <div class="cm-msg ai">
+                <div class="cm-avatar ai">DM</div>
+                <div class="cm-bubble">
+                  Aquí tienes una función robusta con async/await:
+                  <div class="cm-code">
+                    <div class="cm-code-header">
+                      <span class="cm-code-lang">JavaScript</span>
+                      <button class="cm-code-copy" data-action="copy-code">
+                        <i data-lucide="clipboard" style="width:12px;height:12px;"></i>
+                        Copiar
+                      </button>
+                    </div>
+                    <span class="kw">async function</span> <span class="fn">fetchData</span>(url, options = {}) {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(url, options);
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">`HTTP ${res.status}`</span>);
+    <span class="kw">return await</span> res.<span class="fn">json</span>();
+  } <span class="kw">catch</span> (err) {
+    <span class="fn">console</span>.<span class="fn">error</span>(<span class="str">'Fetch error:'</span>, err);
+    <span class="kw">throw</span> err;
+  }
+}
+                  </div>
+                  Maneja errores HTTP y de red por separado.
+                </div>
+              </div>
+            </div>
+            <div class="cm-input">
+              <input type="text" class="cm-input-real" id="chatInput" placeholder="Escribe un mensaje..." autocomplete="off" />
+              <button class="cm-send" id="chatSend" aria-label="Enviar">
+                <i data-lucide="send" style="width:14px;height:14px;"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- API -->
+    <section id="api-section">
+      <div class="container api-grid">
+        <div class="api-code-block reveal">
+          <div class="api-code-header">
+            <span class="api-code-lang">javascript</span>
+            <button class="cm-code-copy" data-action="copy-api">
+              <i data-lucide="clipboard" style="width:12px;height:12px;"></i>
+              Copiar
+            </button>
+          </div>
+          <div class="api-code-body" id="apiCodeBlock"><span class="cm">// Integra DEVMATRIX en tu proyecto</span>
+<span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.devmatrixs.lat/v1/chat'</span>, {
+  method: <span class="str">'POST'</span>,
+  headers: {
+    <span class="key">'Content-Type'</span>: <span class="str">'application/json'</span>,
+    <span class="key">'x-api-key'</span>: <span class="str">'TU_API_KEY'</span>
+  },
+  body: <span class="fn">JSON</span>.<span class="fn">stringify</span>({
+    messages: [{ role: <span class="str">'user'</span>, content: <span class="str">'Hola DEVMATRIX'</span> }]
+  })
+});
+
+<span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+<span class="fn">console</span>.<span class="fn">log</span>(data.reply); <span class="cm">// 👋 Hola, soy DEVMATRIX...</span></div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <span class="section-label"><i data-lucide="code-2" style="width:14px;height:14px;"></i> Para developers</span>
+          <h2 class="section-title">Una API que lo abarca todo</h2>
+          <p class="section-sub">Chat, visión por computadora, síntesis de voz y generación de imágenes. Todo desde <strong style="color:var(--accent-light);">api.devmatrixs.lat</strong> con un solo API Key.</p>
+          <div class="api-features">
+            <div class="api-feat"><span class="api-feat-dot"></span><span><strong>Endpoint unificado</strong> — api.devmatrixs.lat para todos los servicios</span></div>
+            <div class="api-feat"><span class="api-feat-dot"></span><span><strong>Autenticación simple</strong> — API Key desde tu Dashboard</span></div>
+            <div class="api-feat"><span class="api-feat-dot"></span><span><strong>Multimodal real</strong> — Texto, imagen, audio en un solo contrato</span></div>
+            <div class="api-feat"><span class="api-feat-dot"></span><span><strong>Escalable</strong> — Desde hobby hasta producción</span></div>
+          </div>
+          <div style="margin-top:24px;">
+            <a href="/dashboard" class="btn-hero-ghost" style="display:inline-flex;">
+              <i data-lucide="book-open" style="width:15px;height:15px;"></i>
+              Ver documentación completa
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta">
+      <div class="container">
+        <div class="reveal">
+          <h2 class="cta-title"><span class="grad">Empieza hoy.</span><br>Sin compromiso.</h2>
+          <p class="cta-sub">Crea tu cuenta en segundos y obtén tu API Key desde el Dashboard.</p>
+          <a href="/login" class="btn-hero-primary" style="display:inline-flex;font-size:1rem;padding:15px 36px;">
+            <i data-lucide="zap" style="width:18px;height:18px;"></i>
+            Crear cuenta gratis
+          </a>
+          <p class="cta-note">¿Ya tienes cuenta? <a href="/login" style="color:var(--accent-light);">Inicia sesión →</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <!-- Logo footer → lleva a / (index) -->
+        <a href="/" class="nav-logo">
+          <div class="nav-logo-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2">
+              <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/>
+              <line x1="12" y1="2" x2="12" y2="22"/>
+              <line x1="2" y1="8.5" x2="22" y2="8.5"/>
+              <line x1="2" y1="15.5" x2="22" y2="15.5"/>
+            </svg>
+          </div>
+          DEVMATRIX
+        </a>
+        <p class="footer-brand-desc">La API de IA definitiva para developers. Potencia tus apps con chat, visión, voz e imágenes desde un solo endpoint.</p>
+        <div class="contact-email" style="margin-top:16px;display:inline-flex;">
+          <i data-lucide="mail" style="width:14px;height:14px;"></i>
+          contacto@devmatrixs.lat
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Producto</p>
+        <div class="footer-links">
+          <a href="/chat" class="footer-link">Chat IA</a>
+          <a href="/dashboard" class="footer-link">Dashboard</a>
+          <a href="/about" class="footer-link">Acerca de</a>
+        </div>
+      </div>
+      <div>
+        <p class="footer-col-title">Legal</p>
+        <div class="footer-links">
+          <a href="/terminos" class="footer-link">Términos y condiciones</a>
+          <a href="/privacidad" class="footer-link">Política de privacidad</a>
+          <a href="https://wa.me/+51935040872" target="_blank" rel="noopener noreferrer" class="footer-link">Soporte WhatsApp</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 DEVMATRIX · devmatrixs.lat</span>
+      <span class="contact-email" style="background:none;border:none;padding:0;">
+        <i data-lucide="mail" style="width:12px;height:12px;"></i> contacto@devmatrixs.lat
+      </span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">
+    <i data-lucide="check-circle" class="toast-icon" style="width:16px;height:16px;"></i>
+    <span id="toastMsg">Copiado al portapapeles</span>
+  </div>
+
+  <script type="module" src="/js/script.js"></script>
+</body>
+</html>
