@@ -43,6 +43,88 @@ img, svg { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: var(--font); border: none; }
 
+/* ─── VIDEO SCRUBBING — FASE 1 ───────────────────────────── */
+
+/*
+  El <video> ocupa todo el viewport de forma fija.
+  - z-index: -2 → detrás de todo el contenido.
+  - object-fit: cover → llena el viewport sin deformar el video.
+  - image-rendering: crisp-edges → preserva nitidez de líneas
+    de anime (especialmente en pantallas de alta densidad).
+  - pointer-events: none → no interfiere con clicks del usuario.
+  - will-change: transform → hint al navegador para aceleración GPU.
+*/
+#scrub-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  image-rendering: crisp-edges;
+  -webkit-image-rendering: crisp-edges;
+  image-rendering: -webkit-optimize-contrast; /* Safari fallback */
+  z-index: -2;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/*
+  Overlay semitransparente sobre el video.
+  Garantiza contraste mínimo WCAG para los textos
+  de la landing sin ocultar el video por completo.
+  Ajusta la opacidad (0.55) según el brillo del video.
+*/
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 8, 18, 0.55);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/*
+  #scrub-wrapper: define la altura total de scroll.
+  600vh = 6 veces la altura del viewport. Con 5 segundos
+  de video, cada segundo equivale a 120vh de scroll.
+  Este valor lo ajustará el JS dinámicamente en Fase 2
+  usando: wrapperHeight = video.duration * pixelsPerSecond.
+*/
+#scrub-wrapper {
+  position: relative;
+  height: 600vh;
+}
+
+/*
+  #scrub-sticky: el contenedor sticky que "congela" el
+  viewport mientras el usuario scrollea dentro del wrapper.
+  - position: sticky + top: 0 → se pega al tope del viewport.
+  - height: 100vh → ocupa exactamente la pantalla.
+  - overflow: hidden → evita scrollbars internos.
+*/
+#scrub-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* El <main> scrollea dentro del sticky para mostrar secciones */
+#scrub-sticky main {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-behavior: auto; /* JS controlará el scroll, no CSS */
+}
+
+/* Scrollbar personalizado dentro del sticky */
+#scrub-sticky main::-webkit-scrollbar { width: 4px; }
+#scrub-sticky main::-webkit-scrollbar-track { background: transparent; }
+#scrub-sticky main::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 4px;
+}
+
 /* ─── LAYOUT ────────────────────────────────────────────── */
 main { position: relative; z-index: 1; }
 section { padding: clamp(64px,10vw,120px) clamp(16px,5vw,64px); }
@@ -558,6 +640,13 @@ footer::before {
 @media (max-width: 768px) {
   .demo-layout    { grid-template-columns: 1fr; }
   .api-grid       { grid-template-columns: 1fr; }
+  /* En móvil desactivamos el scrubbing: el video no se muestra
+     y la página scrollea normalmente sin el wrapper sticky */
+  #scrub-video    { display: none; }
+  .video-overlay  { display: none; }
+  #scrub-wrapper  { height: auto; }
+  #scrub-sticky   { position: relative; height: auto; overflow: visible; }
+  #scrub-sticky main { overflow: visible; height: auto; }
 }
 @media (max-width: 640px) {
   .nav-links .nav-link { display: none; }
