@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════════════
    style.css — DEVMATRIX Landing Page
-   Organización: Variables → Base → Layout → Nav → Hero
-                 → Features → Demo → API → CTA → Footer
-                 → Animaciones → Utilidades → Responsive
+   Organización: Variables → Base → Video Scrubbing → Layout
+                 → Nav → Hero → Features → Demo → API → CTA
+                 → Footer → Animaciones → Reveal → Responsive
    ═══════════════════════════════════════════════════════════ */
 
 /* ─── VARIABLES ─────────────────────────────────────────── */
@@ -43,17 +43,19 @@ img, svg { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 button { cursor: pointer; font-family: var(--font); border: none; }
 
-/* ─── VIDEO SCRUBBING — FASE 1 ───────────────────────────── */
+/* ─── VIDEO SCRUBBING — FASE 1 (BUGS CORREGIDOS) ─────────
+   FIX #1: #scrub-sticky NO tiene overflow de ningún tipo.
+            overflow:hidden en un ancestro rompe position:fixed
+            de todos sus descendientes (nav, stars, glow, video).
+   FIX #2: #scrub-sticky main NO tiene height ni overflow-y.
+            El <main> fluye normalmente dentro del sticky.
+            El body es el único scroll container.
+   FIX #3: Sin overflow en el ancestro, backdrop-filter de
+            .feat-card/.chat-mockup/.nav resuelven su stacking
+            context contra el viewport, como debe ser.
+   ──────────────────────────────────────────────────────── */
 
-/*
-  El <video> ocupa todo el viewport de forma fija.
-  - z-index: -2 → detrás de todo el contenido.
-  - object-fit: cover → llena el viewport sin deformar el video.
-  - image-rendering: crisp-edges → preserva nitidez de líneas
-    de anime (especialmente en pantallas de alta densidad).
-  - pointer-events: none → no interfiere con clicks del usuario.
-  - will-change: transform → hint al navegador para aceleración GPU.
-*/
+/* Capa 0 — video fijo detrás de todo */
 #scrub-video {
   position: fixed;
   inset: 0;
@@ -63,18 +65,13 @@ button { cursor: pointer; font-family: var(--font); border: none; }
   object-position: center center;
   image-rendering: crisp-edges;
   -webkit-image-rendering: crisp-edges;
-  image-rendering: -webkit-optimize-contrast; /* Safari fallback */
+  image-rendering: -webkit-optimize-contrast;
   z-index: -2;
   pointer-events: none;
   will-change: transform;
 }
 
-/*
-  Overlay semitransparente sobre el video.
-  Garantiza contraste mínimo WCAG para los textos
-  de la landing sin ocultar el video por completo.
-  Ajusta la opacidad (0.55) según el brillo del video.
-*/
+/* Capa 1 — overlay semitransparente para legibilidad */
 .video-overlay {
   position: fixed;
   inset: 0;
@@ -84,45 +81,38 @@ button { cursor: pointer; font-family: var(--font); border: none; }
 }
 
 /*
-  #scrub-wrapper: define la altura total de scroll.
-  600vh = 6 veces la altura del viewport. Con 5 segundos
-  de video, cada segundo equivale a 120vh de scroll.
-  Este valor lo ajustará el JS dinámicamente en Fase 2
-  usando: wrapperHeight = video.duration * pixelsPerSecond.
+  #scrub-wrapper da los 600vh de altura al body para que
+  el body scrollee normalmente. El JS de Fase 2 ajustará
+  esta altura con: wrapper.style.height = duration * pxPerSec + 'px'
 */
 #scrub-wrapper {
   position: relative;
   height: 600vh;
+  /* SIN overflow — dejar que el body maneje el scroll */
 }
 
 /*
-  #scrub-sticky: el contenedor sticky que "congela" el
-  viewport mientras el usuario scrollea dentro del wrapper.
-  - position: sticky + top: 0 → se pega al tope del viewport.
-  - height: 100vh → ocupa exactamente la pantalla.
-  - overflow: hidden → evita scrollbars internos.
+  #scrub-sticky congela la vista del contenido mientras
+  el usuario scrollea el wrapper. CRÍTICO: sin overflow
+  de ningún tipo para no romper los position:fixed internos.
 */
 #scrub-sticky {
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow: hidden;
+  /* SIN overflow — este es el fix del Bug #1 y #3 */
 }
 
-/* El <main> scrollea dentro del sticky para mostrar secciones */
+/*
+  <main> fluye con altura natural dentro del sticky.
+  SIN height:100% ni overflow-y:auto — fix del Bug #2.
+  Las secciones apilan verticalmente y el contenido
+  queda visible gracias al scroll del body (wrapper).
+*/
 #scrub-sticky main {
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: auto; /* JS controlará el scroll, no CSS */
-}
-
-/* Scrollbar personalizado dentro del sticky */
-#scrub-sticky main::-webkit-scrollbar { width: 4px; }
-#scrub-sticky main::-webkit-scrollbar-track { background: transparent; }
-#scrub-sticky main::-webkit-scrollbar-thumb {
-  background: var(--border-accent);
-  border-radius: 4px;
+  position: relative;
+  z-index: 1;
+  /* SIN height ni overflow — flujo normal */
 }
 
 /* ─── LAYOUT ────────────────────────────────────────────── */
@@ -640,13 +630,11 @@ footer::before {
 @media (max-width: 768px) {
   .demo-layout    { grid-template-columns: 1fr; }
   .api-grid       { grid-template-columns: 1fr; }
-  /* En móvil desactivamos el scrubbing: el video no se muestra
-     y la página scrollea normalmente sin el wrapper sticky */
+  /* Móvil: desactivar scrubbing, volver a flujo normal */
   #scrub-video    { display: none; }
   .video-overlay  { display: none; }
   #scrub-wrapper  { height: auto; }
-  #scrub-sticky   { position: relative; height: auto; overflow: visible; }
-  #scrub-sticky main { overflow: visible; height: auto; }
+  #scrub-sticky   { position: relative; height: auto; }
 }
 @media (max-width: 640px) {
   .nav-links .nav-link { display: none; }
